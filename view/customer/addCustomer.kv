@@ -1,0 +1,101 @@
+<AddCustomerWindow>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 30
+        padding: 20
+
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text: "[color=#0F7373]Add Customer[/color]"
+            font_size: 32
+            size_hint_y: None
+            height: 50
+            markup: True
+            pos_hint: {'center_x': 0.5}
+        
+        Label:
+            id: message_label
+            text: ""
+            size_hint_y: None
+            height: 10
+            color: (1, 0, 0, 1)  # Red color for error messages
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_id
+            hint_text: "Customer Id"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_name
+            hint_text: "Customer Name"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_email
+            hint_text: "Customer Email"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_phone
+            hint_text: "Customer Phone"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_address
+            hint_text: "Customer Address"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+
+        TextInput:
+            id: customer_company
+            hint_text: "Customer Company"
+            size_hint: (None, None)
+            width: 300
+            height: 40
+            pos_hint: {'center_x': 0.5}
+        
+        # Adding a horizontal BoxLayout for buttons and centering it
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            size_hint: (None, None)
+            width: 320  # Width matches the total width of buttons + spacing
+            height: 40
+            pos_hint: {'center_x': 0.5}  # Center the entire button row
+
+            Button:
+                text: "Submit"
+                size_hint: (None, None)
+                width: 150
+                height: 40
+                background_color: (.06, .45, .45, 1)
+                on_release: root.add_customer()
+
+            Button:
+                text: "Back to Dashboard"
+                size_hint: (None, None)
+                width: 150
+                height: 40
+                background_color: (.06, .45, .45, 1)
+                on_release: app.root.current = 'dashboard'

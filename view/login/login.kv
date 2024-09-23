@@ -1,0 +1,64 @@
+<LoginWindow>:
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: main_win.space_x
+        spacing: 30
+
+        Image:
+            source: 'img/logo.png' 
+            size_hint_y: None
+            height: 70 
+            allow_stretch: True
+            keep_ratio: True 
+
+        Label:
+            text: "[color=#0F7373]Good to see you again![/color]" 
+            font_size: 28
+            markup: True 
+            size_hint_y: None
+            height: 20
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 100  
+
+            Label: 
+                id: info
+                text: ''
+                markup: True
+                size_hint_y: None
+                height: 20
+
+            TextInput: 
+                id: username_field
+                hint_text: "Username"
+                multiline: False
+                focus: True
+                on_text_validate: password_field.focus = True
+                
+            TextInput:
+                id: password_field
+                hint_text: "Password"
+                multiline: False
+                password: True
+                on_text_validate: root.validate_user()
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 40
+            background_color: (.06, .45, .45, 1)
+            on_release: root.validate_user()

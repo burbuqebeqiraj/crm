@@ -1,0 +1,92 @@
+<DashboardWindow>:
+    BoxLayout:
+        orientation: "horizontal"
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)  # Background color for main layout
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        # Left Sidebar with buttons
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.2
+            spacing: 5 
+            padding: [0, 60, 0, 0]  
+            canvas.before:
+                Color:
+                    rgba: (.06, .45, .45, 1)  # Sidebar color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # Customer Button
+            Button:
+                text: 'Customer'
+                background_color: (.06, .45, .45, 1)
+                background_normal: ''
+                bold: True
+                size_hint_y: None
+                height: 50
+                on_release: root.load_customers()
+
+            # Product Button
+            Button:
+                text: 'Product'
+                background_color: (.06, .45, .45, 1)
+                background_normal: ''
+                bold: True
+                size_hint_y: None
+                height: 50
+
+            # User Button
+            Button:
+                text: 'User'
+                background_color: (.06, .45, .45, 1)
+                background_normal: ''
+                bold: True
+                size_hint_y: None
+                height: 50
+
+            # Logout Button
+            Button:
+                text: 'Logout'
+                background_normal: ''
+                on_release: app.root.current = 'login'
+                background_color: (.06, .45, .45, 1)
+                bold: True
+                size_hint_y: None
+                height: 50
+
+            # Filler space to push buttons to the top
+            Widget:
+                size_hint_y: 1
+
+        # Right side (Header + Content Area)
+        BoxLayout:
+            orientation: "vertical"
+
+            # Header
+            BoxLayout:
+                id: header
+                size_hint_y: None
+                height: 60
+                canvas.before:
+                    Color:
+                        rgba: (.06, .45, .45, 1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                Label: 
+                    text: 'Customer Management System'
+                    size_hint_y: .9
+                    bold: True
+                    color: (1, 1, 1, 1)
+
+            # Main Content Area (dynamic content will be loaded here)
+            BoxLayout:
+                id: content_area 
+                orientation: "vertical"
+                Label:
+                    text: "Welcome to the Dashboard"

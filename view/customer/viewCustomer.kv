@@ -1,0 +1,45 @@
+<ViewCustomersWindow>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+        padding: 20
+
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text: "[color=#0F7373]View Customers[/color]"
+            font_size: 32
+            size_hint_y: None
+            height: 50
+            markup: True
+            pos_hint: {'center_x': 0.5}
+
+        Button:
+            text: "Add New"
+            size_hint: (None, None)
+            width: 150
+            height: 40
+            on_release: app.root.current = 'add_customer'
+            background_color: (.06, .45, .45, 1)
+
+        TextInput:
+            id: search_input
+            hint_text: "Search by Name, Email, Phone or Company"
+            size_hint_y: None
+            height: 30
+            on_text: root.search_customers(self.text)
+
+       
+        ScrollView:
+            GridLayout:
+                id: customers_grid
+                cols: 7
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 40
+                row_force_default: True
